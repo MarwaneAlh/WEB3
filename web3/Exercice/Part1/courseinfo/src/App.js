@@ -4,53 +4,53 @@ function Header({ course }) {
  return <h1>{course}</h1>;
 }
 
-function Content({part}){
-  var names = part.map(function (part) {
-    return part.name + ' ' + part.exercises+' ';
-  });
-  
-  return <div>  {names} </div>;
-
-
+function Part({ part, number_exercice }) {
+ return (
+ <p> <h3>Part:  {part}</h3> Number of exercice : {number_exercice} </p>
+)
 }
+
+function Content({ parts }) {
+ return (
+ <>
+ {parts.map(({ name, exercises }) => {
+ return <
+   Part part={name} number_exercice={exercises} />;
+ })}
+ </>
+ )
+}
+
 
 
 function App() {
+ const course = {
+ name: 'Half Stack application development',
+ parts: [
+ {
+ name: 'Fundamentals of React',
+ exercises: 10,
+ },
+ {
+ name: 'Using props to pass data',
+ exercises: 7,
+ },
+ {
+ name: 'State of a component',
+ exercises: 14,
+ },
+ ],
+ };
 
- const course = 'Half Stack application development'
- const parts = [
-  {
-    name: 'Fundamentals of React',
-    exercises: 10
-  },
-  {
-    name: 'Using props to pass data',
-    exercises: 7
-  },
-  {
-    name: 'State of a component',
-    exercises: 14
-  }
-]
 
-
- /*const total = course.parts.reduce((prev, curr) => prev + curr.exercises, 0);
-  <Total total={total} />*/
 
  return (
-  
  <>
- <Header course={course} />
- <Content part={parts}/>
-
-
- 
+ <Header course={course.name} />
+ <Content parts={course.parts} />
 
  </>
-
  );
-  
-  
 }
 
-export default App;
+export default App; 
