@@ -28,8 +28,7 @@ function App() {
  }
 
 
- /*const total = course.parts.reduce((prev, curr) => prev + curr.exercises, 0);
-  <Total total={total} />*/
+
 
  return (
   
